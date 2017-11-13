@@ -14,4 +14,7 @@ public class MainActivity extends AppCompatActivity {
     public void add(){
         System.out.print("你好");
     }
+    public void remove(){
+        System.out.print("下载");
+    }
 }
