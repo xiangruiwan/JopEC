@@ -10,13 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.administrator.jopec.MainActivity">
 
-    <TextView
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/icon_test"
         android:layout_width="wrap_content"
+        android:text="{icon-scan}"
+
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="你好" />
+        tools:ignore="HardcodedText"/>
 </RelativeLayout>

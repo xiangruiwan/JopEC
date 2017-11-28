@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+//butterknife插件
+apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 25
@@ -29,4 +32,23 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
     compile project(':latte-annotations')
+    //字体图标库
+    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+    //fragmentation依赖库
+    compile 'me.yokeyword:fragmentation:1.1.8'
+    compile 'me.yokeyword:fragmentation-swipeback:1.1.8'
+    //Butterknife依赖
+//    compile 'com.jakewharton:butterknife:8.4.0'
+//    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //必须用8.4.0要不我的gradle识别不了
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    //网络请求依赖
+    compile 'com.squareup.okio:okio:1.13.0'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+
+
 }

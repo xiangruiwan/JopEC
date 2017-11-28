@@ -1,20 +1,11 @@
 package com.example.administrator.jopec;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import com.example.latte.activities.ProxyActivity;
+import com.example.latte.delegates.LatteDelegate;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends ProxyActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        add();
-    }
-    public void add(){
-        System.out.print("你好");
-    }
-    public void remove(){
-        System.out.print("下载");
+    public LatteDelegate setRootDelegate() {
+        return new ExampleDelegate();
     }
 }
