@@ -1,9 +1,12 @@
 package com.example.latte.net;
 
+import android.content.Context;
+
 import com.example.latte.net.callback.IError;
 import com.example.latte.net.callback.IFailure;
 import com.example.latte.net.callback.IRequest;
 import com.example.latte.net.callback.ISuccess;
+import com.example.latte.ui.LoaderStyle;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -16,13 +19,15 @@ import okhttp3.ResponseBody;
  */
 
 public class RestClientBuilder {
-    private  String mUrl;//不想修改保证原子性，利于多线程的安全
+    private  String mUrl=null;//不想修改保证原子性，利于多线程的安全
     private  static final Map<String,Object> PARAMS=RestCreator.getParams();
-    private  IRequest mIRequest;
-    private  ISuccess mISuccess;
-    private  IFailure mIFailure;
-    private  IError mIError;
-    private  ResponseBody mBody;//请求体\
+    private  IRequest mIRequest=null;
+    private  ISuccess mISuccess=null;
+    private  IFailure mIFailure=null;
+    private  IError mIError=null;
+    private  ResponseBody mBody=null;//请求体\
+    private Context mcontext=null;
+    private LoaderStyle mloaderstyle=null;
     RestClientBuilder(){
 
     }
@@ -47,6 +52,18 @@ public class RestClientBuilder {
 
         this.mBody=ResponseBody.create(MediaType.parse("application/json;charset=UTF-8"),raw);
 
+        return this;
+    }
+    //传入文本和加载的风格样式
+    public final RestClientBuilder loader(Context context,LoaderStyle loaderStyle){
+        this.mcontext=context;
+        this.mloaderstyle=loaderStyle;
+        return this;
+    }
+    //默认loader
+    public final RestClientBuilder loader(Context context){
+        this.mcontext=context;
+        this.mloaderstyle= LoaderStyle.BallClipRotatePulseIndicator;
         return this;
     }
     //传入请求的回调
@@ -79,6 +96,6 @@ public class RestClientBuilder {
     }
 
     public final RestClient build(){
-        return new RestClient(mUrl,PARAMS,mIRequest,mISuccess,mIFailure,mIError,mBody);
+        return new RestClient(mUrl,PARAMS,mIRequest,mISuccess,mIFailure,mIError,mBody,mcontext,mloaderstyle);
     }
 }

@@ -3,6 +3,7 @@ package com.example.administrator.jopec;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.latte.delegates.LatteDelegate;
 import com.example.latte.net.RestClient;
@@ -22,7 +23,7 @@ public class ExampleDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-
+        testRestClient();
     }
     private void testRestClient(){
         //构造者模式+回调接口
@@ -30,11 +31,12 @@ public class ExampleDelegate extends LatteDelegate {
         //构造者模式设计RestClient、RestClientBuilder
         //总结理解了andriod点击事件执行成功的回调原理
         RestClient.builder()
-                .url("")
-                .params("","")
+                .url("http://news.baidu.com/")
+                .loader(getContext())
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
+                        Toast.makeText(getContext(),response,Toast.LENGTH_LONG).show();
 
                     }
                 })
@@ -50,7 +52,8 @@ public class ExampleDelegate extends LatteDelegate {
 
                     }
                 })
-                .build();
+                .build()
+                .get();
     }
 
 }

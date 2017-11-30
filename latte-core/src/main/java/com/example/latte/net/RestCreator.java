@@ -44,6 +44,6 @@ public class RestCreator {
 
     }
     private static  final class RestServiceHolder{
-        private static final RestService    REST_SERVICE=RetrofitHolder.RETROFIT_CLIENT.create(RestService.class);
+        private static final RestService    REST_SERVICE=RetrofitHolder.RETROFIT_CLIENT.create(RestService.class);//这里采用的是Java的动态代理模式
     }
 }
