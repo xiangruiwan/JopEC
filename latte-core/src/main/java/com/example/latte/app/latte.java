@@ -1,6 +1,7 @@
 package com.example.latte.app;
 
 import android.content.Context;
+import android.os.Handler;
 
 import java.util.HashMap;
 
@@ -16,11 +17,20 @@ public final class latte {
         return Configurator.getInstance();//返回的是Configurator里的INSTANCE这个对象
 
     }
-    public static HashMap<String,Object> getConfigurations(){
+    public static HashMap<Object,Object> getConfigurations(){
         //拿到Configurator里面的LATTE_CONFIGS这个对象
         return Configurator.getInstance().getLatteConfigs();
     }
+    public static Configurator getConfigurator() {
+        return Configurator.getInstance();
+    }
+    public static <T> T getConfiguration(Object key) {
+        return getConfigurator().getConfiguration(key);
+    }
     public static Context getApplication(){
         return  (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
+    }
+    public static Handler getHandler() {
+        return getConfiguration(ConfigType.HANDLER);
     }
 }

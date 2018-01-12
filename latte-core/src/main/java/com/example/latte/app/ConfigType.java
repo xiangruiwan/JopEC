@@ -13,5 +13,12 @@ public enum ConfigType {
     //控制初始化和配置完成
     CONFIG_READY,
     //存储自己的初始化项目
-    ICON
+    ICON,
+    INTERCEPTOR,
+//微信的初始化
+    WE_CHAT_APP_ID,
+    WE_CHAT_APP_SECRET,
+    ACTIVITY,
+    HANDLER,
+    JAVASCRIPT_INTERFACE
 }

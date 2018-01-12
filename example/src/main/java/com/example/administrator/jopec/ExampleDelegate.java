@@ -31,7 +31,7 @@ public class ExampleDelegate extends LatteDelegate {
         //构造者模式设计RestClient、RestClientBuilder
         //总结理解了andriod点击事件执行成功的回调原理
         RestClient.builder()
-                .url("http://news.baidu.com/")
+                .url("http://127.0.0.1/index")
                 .loader(getContext())
                 .success(new ISuccess() {
                     @Override
